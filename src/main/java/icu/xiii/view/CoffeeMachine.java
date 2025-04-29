@@ -12,10 +12,14 @@ import java.util.Scanner;
 
 public class CoffeeMachine {
 
-    private final Map<Integer, String> drinks = new HashMap<>();
+    private final Map<Integer, CoffeeMaker> drinks = new HashMap<>();
 
-    public void addDrink(String name) {
-        this.drinks.put(drinks.size() + 1, name);
+    public void addDrink(int id, CoffeeMaker coffeeMaker) {
+        drinks.putIfAbsent(id, coffeeMaker);
+    }
+
+    public void removeDrink(int id) {
+        drinks.remove(id);
     }
 
     public void displayMenu() {
@@ -24,7 +28,7 @@ public class CoffeeMachine {
         this.drinks.forEach((k, v) -> {
             sb.append(k)
                     .append(" - ")
-                    .append(v)
+                    .append(v.getName())
                     .append("\n");
         });
         System.out.println(sb.toString().trim());
@@ -34,12 +38,8 @@ public class CoffeeMachine {
         Scanner scanner = new Scanner(System.in);
         try {
             int coffeeNumber = scanner.nextInt();
-            if (this.drinks.containsKey(coffeeNumber)) {
-                switch (coffeeNumber) {
-                    case 1: return new EspressoCoffeeMaker();
-                    case 2: return new CappuccinoCoffeeMaker();
-                    case 3: return new LatteCoffeeMaker();
-                }
+            if (drinks.containsKey(coffeeNumber)) {
+                return drinks.get(coffeeNumber);
             }
             System.out.println("Unknown coffee, please try again.");
         } catch (InputMismatchException e) {
