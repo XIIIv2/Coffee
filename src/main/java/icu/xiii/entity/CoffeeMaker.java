@@ -3,5 +3,8 @@ package icu.xiii.entity;
 public interface CoffeeMaker {
 
     String getName();
-    String make();
+
+    default String make() {
+        return "Your " + getName() + ". Enjoy :)";
+    }
 }

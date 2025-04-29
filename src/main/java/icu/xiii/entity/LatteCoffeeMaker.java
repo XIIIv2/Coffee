@@ -6,9 +6,4 @@ public class LatteCoffeeMaker implements CoffeeMaker {
     public String getName() {
         return "Latte";
     }
-
-    @Override
-    public String make() {
-        return "Your " + getName() + ". Enjoy :)";
-    }
 }

@@ -1,9 +1,6 @@
 package icu.xiii.view;
 
-import icu.xiii.entity.CappuccinoCoffeeMaker;
 import icu.xiii.entity.CoffeeMaker;
-import icu.xiii.entity.EspressoCoffeeMaker;
-import icu.xiii.entity.LatteCoffeeMaker;
 
 import java.util.HashMap;
 import java.util.InputMismatchException;
